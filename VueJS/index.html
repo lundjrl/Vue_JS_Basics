@@ -1,0 +1,43 @@
+<html>
+    <head>
+            <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+            <link rel="stylesheet" type="text/css" href="mainpage.css">
+    </head>
+    <body>
+        <h2>VueJS Experiment by JamesLund:)</h2>
+        <div id="top">
+                <!-- Basic Slider <div id="control">
+                  <label for="inputrange">Number of users: </label>
+                  <input id="inputrange" type="range" min="1" max="10" value="4">
+                </div>
+              </div> --->
+              <!-- Slider with return output for default number inside of firstvue.js
+              <div id="control">
+                    <label for="inputrange">Will fetch {{userCount}} random user(s)</label>
+                    <input id="inputrange" type="range" min="1" max="10" v-bind:value="userCount">
+                  </div> -->
+          <div id="control">
+            <label for="inputrange" v-if="userCount==1">Will fetch 1 random user</label>
+            <label for="inputrange" v-else>Will fetch {{userCount}} random users</label>
+            <input id="inputrange" type="range" min="1" max="50" v-model:value="userCount">
+            <button v-on:click="getUser">Fetch</button>
+            <button v-on:click="resetUser">Reset</button>
+            <div id="fetchresult">
+                <table id="usersTable">
+                        <tr>
+                            <th>First Name</th><th>Last Name</th><th>Email</th><th>Login</th><th>Phone</th><th>DOB</th><th>Img</th>
+                         </tr>
+                        <template v-for="u in users" id="template" >
+                                <tr v-on:mouseover="enlargeImg(u.picture.large)" @mouseleave="resetImg()">
+                                    <td>{{u.name.first}}</td><td>{{u.name.last}}</td>
+                                    <td>{{u.email}}</td><td>{{u.login.username}}</td>
+                                    <td>{{u.phone}}</td><td>{{u.dob.date}}</td> <!--u.dob.date-->
+                                    <td><img id="image" v-bind:src="u.picture.thumbnail"></td></tr>
+                              </template>
+                </table>
+                <img :src="currentImage"> 
+            </div>
+         </div>
+        <script src="firstvue.js"></script>
+    </body>
+</html>

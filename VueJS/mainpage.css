@@ -1,0 +1,10 @@
+#fetchresult{
+    font-family: 'Courier New', Courier, monospace;
+}
+tr:nth-child(even){
+    background-color: cyan;
+    border: black;
+}
+tr:nth-child(odd){
+    background-color: hotpink;
+}
